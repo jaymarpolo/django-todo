@@ -1,0 +1,17 @@
+{% block content %}
+{% load widget_tweaks %}
+<div style="text-align: center; margin-top: 60px;">
+    <h1>UPDATE TO-DO</h1>
+    <form method="post">
+    {% csrf_token %}
+        <input type="hidden" value="{{ user.id }}" name="user">
+        {{ form.title|attr:"autofocus" }}
+        {{ form.completed }}Completed
+        <input type="submit">
+        <br>
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    </form>
+</div>
+{% endblock content %}
